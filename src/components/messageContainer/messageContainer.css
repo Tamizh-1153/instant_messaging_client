@@ -1,0 +1,68 @@
+.my_message {
+  background-color: var(--col-lightGray);
+  color: rgba(0, 0, 0, 0.925);
+  padding: 0.5rem;
+  border-radius: 10px 10px 0px 10px;
+  width: fit-content;
+  max-width: 25rem;
+  gap: 0.5rem;
+  margin: 10px 10px 0 10px;
+}
+
+.message_box {
+  height: 80%;
+  overflow-y: auto;
+}
+
+.react-emoji-picker--wrapper {
+  position: absolute;
+  bottom: 0;
+  right: -5rem;
+  height: 20rem;
+  width: 20rem;
+  overflow: scroll;
+  z-index: 10;
+}
+
+.message_box::-webkit-scrollbar {
+  width: 5px;
+}
+
+.message_box::-webkit-scrollbar-thumb {
+  background-color: var(--col-lightGray);
+  border-radius: 10px;
+}
+
+.my_message_time {
+  margin-right: 10px;
+  font-size: var(--size-xs);
+  color: rgb(128, 128, 128);
+}
+
+.to_message {
+  background: linear-gradient(to bottom, #24c6dc, #514a9d);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px 10px 10px 00px;
+  width: fit-content;
+  max-width: 25rem;
+  gap: 0.5rem;
+  margin: 10px 10px 0 10px;
+}
+
+.to_message_time {
+  margin-left: 10px;
+  font-size: var(--size-xs);
+  color: rgb(128, 128, 128);
+}
+
+@media (min-width: 640px) {
+  .react-emoji-picker--wrapper {
+    bottom: 0;
+    right: 0;
+    height: 435px;
+    width: 352px;
+    overflow: hidden;
+    z-index: 10;
+  }
+}
