@@ -90,7 +90,7 @@ const Chats = () => {
       />
     )
   }
-  console.log(data,chatsLoading);
+  console.log(data,chatsLoading,isError);
 
   return (
     <div className="container fontSize chat_container ">
