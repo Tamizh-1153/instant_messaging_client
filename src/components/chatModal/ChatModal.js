@@ -9,7 +9,7 @@ const ChatModal = ({ opened, close,chats,user }) => {
       onClose={close}
       title="New Chat"
       radius={10}
-      pos={'relative'}
+      pos='relative'
       transitionProps={{ transition: "fade", duration: 200 }}
     >
       <div className="modal_container">

@@ -163,6 +163,7 @@ const MessageContainer = ({
             placeholder="Type a message"
             value={newMessage}
             onChange={setNewMessage}
+            onEnter={handleSend}
           />
         </Group>
         <Button mr={10} style={{ marginBottom: "5px" }} onClick={handleSend}>
