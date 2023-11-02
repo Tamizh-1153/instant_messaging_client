@@ -30,13 +30,17 @@ const Header = () => {
             w="auto"
             fit="contain"
             src={logo}
-            onClick={()=>refresh('/')}
+            onClick={() => refresh("/")}
           />
         </Group>
         <Group>
           {!isAuthenticated ? (
             <>
-              <Button onClick={() => loginWithRedirect()} variant="default">
+              <Button
+                color="#474554"
+                onClick={() => loginWithRedirect()}
+                variant="default"
+              >
                 Log in
               </Button>
               <Button onClick={() => loginWithRedirect()}>Sign up</Button>
@@ -44,17 +48,13 @@ const Header = () => {
           ) : (
             <>
               <Avatar
-              src={chatLogo}
+                src={chatLogo}
                 style={{ cursor: "pointer" }}
                 color="blue"
                 onClick={() => refresh("/chat")}
               />
-               
-              <ProfileMenu
-                
-                user={user}
-                logout={logout}
-              />
+
+              <ProfileMenu user={user} logout={logout} />
             </>
           )}
         </Group>
