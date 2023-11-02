@@ -11,6 +11,7 @@ import { io } from "socket.io-client"
 import { IconMessagePlus } from "@tabler/icons-react"
 import { useDisclosure } from "@mantine/hooks"
 import ChatModal from "../../components/chatModal/ChatModal"
+import { useQueryClient } from "@tanstack/react-query"
 
 const Chats = () => {
   const [chats, setChats] = useState([])
@@ -21,9 +22,10 @@ const Chats = () => {
   const { isAuthenticated, isLoading } = useAuth0()
   const refresh = useNavigate()
   const { user } = useSelector((store) => store.user)
-  const { data,isLoading:chatsLoading } = useUserChats(user?._id)
+  const { data,isLoading:chatsLoading,isError } = useUserChats(user?._id)
   const socket = useRef()
   const [opened, { open, close }] = useDisclosure(false)
+  const queryclient= useQueryClient()
 
   useEffect(() => {
     socket.current = io("https://instant-messaging-socket-tm.onrender.com")
@@ -74,7 +76,11 @@ const Chats = () => {
     refresh("/")
   }
 
-  if(chatsLoading){
+  if(isError){
+    queryclient.invalidateQueries({queryKey:['chats']})
+  }
+
+  if(chatsLoading || data===undefined){
     return (
       <LoadingOverlay
         visible={true}
@@ -84,6 +90,7 @@ const Chats = () => {
       />
     )
   }
+  console.log(data,chatsLoading);
 
   return (
     <div className="container fontSize chat_container ">
