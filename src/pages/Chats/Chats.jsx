@@ -26,7 +26,7 @@ const Chats = () => {
   const [opened, { open, close }] = useDisclosure(false)
 
   useEffect(() => {
-    socket.current = io("http://localhost:6060")
+    socket.current = io("https://instant-messaging-socket-tm.onrender.com")
     socket.current.emit("new-user-add", user?._id)
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users)
