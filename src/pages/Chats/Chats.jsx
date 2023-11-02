@@ -21,7 +21,7 @@ const Chats = () => {
   const { isAuthenticated, isLoading } = useAuth0()
   const refresh = useNavigate()
   const { user } = useSelector((store) => store.user)
-  const { data } = useUserChats(user?._id)
+  const { data,isLoading:chatsLoading } = useUserChats(user?._id)
   const socket = useRef()
   const [opened, { open, close }] = useDisclosure(false)
 
@@ -74,16 +74,16 @@ const Chats = () => {
     refresh("/")
   }
 
-  // if(chats.length===0){
-  //   return (
-  //     <LoadingOverlay
-  //       visible={true}
-  //       zIndex={1000}
-  //       overlayProps={{ radius: "sm", blur: 1 }}
-  //       loaderProps={{ color: "blue", type: "dots", size: "lg" }}
-  //     />
-  //   )
-  // }
+  if(chatsLoading){
+    return (
+      <LoadingOverlay
+        visible={true}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 1 }}
+        loaderProps={{ color: "blue", type: "dots", size: "lg" }}
+      />
+    )
+  }
 
   return (
     <div className="container fontSize chat_container ">
