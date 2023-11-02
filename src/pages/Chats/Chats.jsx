@@ -74,16 +74,16 @@ const Chats = () => {
     refresh("/")
   }
 
-  if(chats.length===0){
-    return (
-      <LoadingOverlay
-        visible={true}
-        zIndex={1000}
-        overlayProps={{ radius: "sm", blur: 1 }}
-        loaderProps={{ color: "blue", type: "dots", size: "lg" }}
-      />
-    )
-  }
+  // if(chats.length===0){
+  //   return (
+  //     <LoadingOverlay
+  //       visible={true}
+  //       zIndex={1000}
+  //       overlayProps={{ radius: "sm", blur: 1 }}
+  //       loaderProps={{ color: "blue", type: "dots", size: "lg" }}
+  //     />
+  //   )
+  // }
 
   return (
     <div className="container fontSize chat_container ">
