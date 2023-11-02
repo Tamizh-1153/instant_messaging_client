@@ -36,30 +36,28 @@ const SearchBar = ({ chats, user }) => {
         visible={true}
         zIndex={1000}
         overlayProps={{ radius: "sm", blur: 2 }}
-        loaderProps={{ color: "blue", type: "dots"}}
+        loaderProps={{ color: "blue", type: "dots" }}
       />
     )
   }
 
   return (
-    <div className="chat_left">
-      <Flex justify="flex-start" align="flex-start" direction="column">
-        {newUsers?.length === 0 ? (
-          <Text>You're connected with all users</Text>
-        ) : (
-          newUsers?.map((newUser) => (
-            <Group
-              style={{ cursor: "pointer" }}
-              onClick={() => mutate(newUser?._id)}
-            >
-              <Avatar src={newUser?.picture} />
-              <Text>{newUser?.name}</Text>
-              <Space />
-            </Group>
-          ))
-        )}
-      </Flex>
-    </div>
+    <Flex justify="flex-start" align="flex-start" direction="column">
+      {newUsers?.length === 0 ? (
+        <Text>You're connected with all users</Text>
+      ) : (
+        newUsers?.map((newUser) => (
+          <Group
+            style={{ cursor: "pointer" }}
+            onClick={() => mutate(newUser?._id)}
+          >
+            <Avatar src={newUser?.picture} />
+            <Text>{newUser?.name}</Text>
+            <Space />
+          </Group>
+        ))
+      )}
+    </Flex>
   )
 }
 
