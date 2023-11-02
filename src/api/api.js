@@ -64,7 +64,7 @@ export const getToChatUser = async (id) => {
     )
     return response.data
   } catch (error) {
-    toast.error("Error getting toChatUser info")
+    console.log("Error getting toChatUser info")
   }
 }
 
@@ -77,7 +77,7 @@ export const getMessages = async (id) => {
     })
     return response.data
   } catch (error) {
-    toast.error("Error getting toChatUser info")
+    console.log("Error getting toChatUser info")
   }
 }
 
