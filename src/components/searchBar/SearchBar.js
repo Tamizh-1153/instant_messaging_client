@@ -1,11 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import React from "react"
 import { createChat, getAllUsers } from "../../api/api"
-import { Avatar, Flex, Group, Space, Text } from "@mantine/core"
+import { Avatar, Flex, Group, LoadingOverlay, Space, Text } from "@mantine/core"
 
 const SearchBar = ({ chats, user }) => {
   const queryclient = useQueryClient()
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["allUsers"],
     queryFn: () => getAllUsers(),
   })
@@ -29,6 +29,17 @@ const SearchBar = ({ chats, user }) => {
       queryclient.invalidateQueries({ queryKey: ["allUsers"] })
     },
   })
+
+  if (isLoading) {
+    return (
+      <LoadingOverlay
+        visible={true}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+        loaderProps={{ color: "blue", type: "dots"}}
+      />
+    )
+  }
 
   return (
     <div className="chat_left">
